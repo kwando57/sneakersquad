@@ -63,7 +63,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
       {children}
       <EnquiryDrawer />
       {toast && (
-        <div role="status" className="animate-toast fixed bottom-6 left-1/2 z-[70] w-[min(92vw,26rem)] -translate-x-1/2 rounded-xl border border-primary/40 bg-popover px-4 py-3 text-sm shadow-glow">
+        <div role="status" className="animate-toast fixed bottom-6 left-1/2 z-[70] w-[min(92vw,26rem)] rounded-xl border border-primary/40 bg-popover px-4 py-3 text-sm shadow-glow">
           <span className="font-semibold text-accent">✓ </span>{toast}
           <button onClick={() => { setToast(null); setOpen(true); }} className="ml-2 font-semibold text-primary underline-offset-2 hover:underline">View list</button>
         </div>

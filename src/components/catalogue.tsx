@@ -37,7 +37,7 @@ export function ProductCard({ product }: { product: Product }) {
         </p>
         {needsSize && (
           <label className="text-xs text-muted-foreground">
-            Listed sizes (UK) — stock to be confirmed
+            Listed sizes — stock to be confirmed
             <select value={size} onChange={(e) => setSize(e.target.value)} className="mt-1 w-full rounded-lg border bg-input/40 px-3 py-2 text-sm text-foreground">
               <option value="">Choose a size (optional)</option>
               {product.listedSizes!.map((s) => <option key={s} value={s}>Size {s}</option>)}
