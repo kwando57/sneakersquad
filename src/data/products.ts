@@ -13,13 +13,13 @@ export interface Product {
   name: string;
   category: Category;
   price: number | null;
-  storage?: string;
-  listedSizes?: string[];
+  storage?: string | undefined;
+  listedSizes?: string[] | undefined;
   availability: Availability;
-  featured?: boolean;
-  description?: string;
-  ownerNote?: string;
-  image?: string;
+  featured?: boolean | undefined;
+  description?: string | undefined;
+  ownerNote?: string | undefined;
+  image?: string | undefined;
 }
 
 export const CATEGORY_LABELS: Record<Category, string> = {

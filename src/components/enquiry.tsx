@@ -3,9 +3,9 @@ import { getProduct, formatPrice, type Product } from "@/data/products";
 import { listMessage, waLink } from "@/lib/whatsapp";
 import { X, Trash2, MessageCircle } from "lucide-react";
 
-interface Item { id: string; size?: string }
+interface Item { id: string; size?: string | undefined }
 interface Ctx {
-  items: { product: Product; size?: string; key: string }[];
+  items: { product: Product; size?: string | undefined; key: string }[];
   add: (id: string, size?: string) => void;
   remove: (key: string) => void;
   clear: () => void;
