@@ -18,7 +18,7 @@ const describe = (p: Product, size?: string) => {
 export const productMessage = (p: Product, size?: string) =>
   `Hi Sneaker Squad, I am interested in ${describe(p, size)} (listed at ${formatPrice(p.price)}). Please confirm the current price, availability and delivery options.`;
 
-export const listMessage = (items: { product: Product; size?: string }[]) =>
+export const listMessage = (items: { product: Product; size?: string | undefined }[]) =>
   [
     "Hi Sneaker Squad, I am interested in the following items:",
     ...items.map((it, i) => `${i + 1}. ${describe(it.product, it.size)} (listed at ${formatPrice(it.product.price)})`),
