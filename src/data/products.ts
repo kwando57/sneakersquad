@@ -5,7 +5,7 @@
  * availability: only set "in-stock" / "sold-out" once the owner confirms; otherwise "confirm".
  * image: import a real product photo from src/assets and set it here when supplied.
  */
-export type Category = "iphones" | "sneakers" | "clothing" | "gaming" | "accessories";
+export type Category = "iphones" | "sneakers";
 export type Availability = "confirm" | "in-stock" | "sold-out";
 
 export interface Product {
@@ -25,9 +25,6 @@ export interface Product {
 export const CATEGORY_LABELS: Record<Category, string> = {
   iphones: "iPhones",
   sneakers: "Sneakers",
-  clothing: "Clothing",
-  gaming: "Gaming",
-  accessories: "Accessories",
 };
 
 const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => String(a + i));
@@ -81,7 +78,7 @@ const sneakers: [string, number, string[] | undefined, string?][] = [
 
 const FEATURED = new Set([
   "iphone-16-pro-max-256gb", "iphone-15-pro-128gb", "iphone-13-128gb",
-  "nike-sb-dunk", "new-balance-550", "air-jordan-1-high", "ps5-slim-digital-edition-1tb", "airpods-pro",
+  "nike-sb-dunk", "new-balance-550", "air-jordan-1-high",
 ]);
 
 export const products: Product[] = [
@@ -100,8 +97,6 @@ export const products: Product[] = [
       availability: "confirm" as const, featured: FEATURED.has(id),
     };
   }),
-  { id: "ps5-slim-digital-edition-1tb", name: "PS5 Slim Digital Edition", storage: "1TB", price: 11500, category: "gaming", availability: "confirm", featured: true },
-  { id: "airpods-pro", name: "AirPods Pro", price: 400, category: "accessories", availability: "confirm", featured: true, ownerNote: "Model generation and condition to be confirmed by the owner." },
 ];
 
 export const getProduct = (id: string) => products.find((p) => p.id === id);

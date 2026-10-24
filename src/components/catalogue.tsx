@@ -1,11 +1,11 @@
 import { useMemo, useState } from "react";
-import { Search, Plus, MessageCircle, Smartphone, Footprints, Gamepad2, Headphones, Shirt } from "lucide-react";
+import { Search, Plus, MessageCircle, Smartphone, Footprints } from "lucide-react";
 import { products, formatPrice, CATEGORY_LABELS, type Category, type Product } from "@/data/products";
 import { productMessage, waLink } from "@/lib/whatsapp";
 import { useEnquiry } from "./enquiry";
 
 const ICONS: Record<Category, typeof Smartphone> = {
-  iphones: Smartphone, sneakers: Footprints, gaming: Gamepad2, accessories: Headphones, clothing: Shirt,
+  iphones: Smartphone, sneakers: Footprints,
 };
 
 export function ProductCard({ product }: { product: Product }) {
@@ -76,7 +76,7 @@ export function Catalogue({ categories }: { categories?: Category[] }) {
   const [cat, setCat] = useState<Category | "all">("all");
   const [sort, setSort] = useState<Sort>("default");
   const base = categories ? products.filter((p) => categories.includes(p.category)) : products;
-  const chips = (categories ?? (["iphones", "sneakers", "gaming", "accessories"] as Category[]));
+  const chips = (categories ?? (["iphones", "sneakers"] as Category[]));
 
   const list = useMemo(() => {
     let r = base.filter((p) => (cat === "all" || p.category === cat) && `${p.name} ${p.storage ?? ""}`.toLowerCase().includes(q.trim().toLowerCase()));
