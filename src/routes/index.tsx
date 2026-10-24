@@ -3,8 +3,6 @@ import { ArrowRight, Layers, MessageCircle, Truck, UserRound } from "lucide-reac
 import hero from "@/assets/hero.jpg";
 import catIphones from "@/assets/cat-iphones.jpg";
 import catSneakers from "@/assets/cat-sneakers.jpg";
-import catClothing from "@/assets/cat-clothing.jpg";
-import catGaming from "@/assets/cat-gaming.jpg";
 import { products } from "@/data/products";
 import { ProductGrid } from "@/components/catalogue";
 import { Reveal, WhatsAppButton } from "@/components/layout";
@@ -24,13 +22,10 @@ export const Route = createFileRoute("/")({
 const CATS = [
   { to: "/iphones", label: "iPhones", img: catIphones },
   { to: "/sneakers", label: "Sneakers", img: catSneakers },
-  { to: "/clothing", label: "Clothing", img: catClothing },
-  { to: "/gaming", label: "Gaming", img: catGaming },
-  { to: "/gaming", label: "Accessories", img: catGaming },
 ] as const;
 
 const WHY = [
-  { icon: Layers, title: "Lifestyle & tech range", text: "Sneakers, iPhones, clothing, gaming and accessories in one place." },
+  { icon: Layers, title: "Lifestyle & tech range", text: "Sneakers and iPhones in one place." },
   { icon: MessageCircle, title: "Easy WhatsApp enquiries", text: "Message us directly about any product — no account needed." },
   { icon: Truck, title: "Delivery options", text: "Courier options available — confirm the method, timing and fee with us." },
   { icon: UserRound, title: "Personal assistance", text: "Talk to a real person who helps you find the right product." },
@@ -63,9 +58,9 @@ function Home() {
 
       <section className="container-x py-16">
         <Reveal><h2 className="text-2xl font-bold md:text-3xl">Shop by category</h2></Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-5">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {CATS.map((c, i) => (
-            <Reveal key={c.label} delay={i * 70} className={i === 4 ? "col-span-2 md:col-span-1" : ""}>
+            <Reveal key={c.label} delay={i * 70}>
               <Link to={c.to} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border transition hover:border-primary/50">
                 <img src={c.img} alt={`${c.label} category`} loading="lazy" width={800} height={1008} className="size-full object-cover transition duration-500 md:group-hover:scale-105" />
                 <div className="bg-card-fade absolute inset-0" />

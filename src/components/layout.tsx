@@ -20,8 +20,6 @@ const NAV = [
   { to: "/shop", label: "Shop All" },
   { to: "/iphones", label: "iPhones" },
   { to: "/sneakers", label: "Sneakers" },
-  { to: "/clothing", label: "Clothing" },
-  { to: "/gaming", label: "Gaming & Accessories" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact & Delivery" },
 ] as const;
@@ -81,13 +79,13 @@ export function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo />
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">Sneakers, iPhones, clothing, gaming and accessories. Browse online and enquire with Sneaker Squad on WhatsApp.</p>
+          <p className="mt-4 max-w-sm text-sm text-muted-foreground">Sneakers and iPhones. Browse online and enquire with Sneaker Squad on WhatsApp.</p>
           <a href={waLink(generalMessage)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block font-semibold text-primary hover:underline">WhatsApp: {WHATSAPP_DISPLAY}</a>
         </div>
         <div>
           <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">Shop</h3>
           <ul className="space-y-2 text-sm">
-            {NAV.slice(0, 5).map((n) => <li key={n.to}><Link to={n.to} className="hover:text-primary">{n.label}</Link></li>)}
+            {NAV.slice(0, 3).map((n) => <li key={n.to}><Link to={n.to} className="hover:text-primary">{n.label}</Link></li>)}
           </ul>
         </div>
         <div>
