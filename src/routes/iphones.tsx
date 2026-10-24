@@ -8,6 +8,8 @@ export const Route = createFileRoute("/iphones")({
       { title: "iPhones | Sneaker Squad" },
       { name: "description", content: "iPhone models and storage options from Sneaker Squad. Condition and availability confirmed on WhatsApp." },
       { property: "og:title", content: "iPhones | Sneaker Squad" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "iPhone models and storage options from Sneaker Squad. Condition and availability confirmed on WhatsApp." },
     ],
   }),

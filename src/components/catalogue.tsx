@@ -1,31 +1,20 @@
 import { useMemo, useState } from "react";
-import { Search, Plus, MessageCircle, Smartphone, Footprints } from "lucide-react";
+import { Search, Plus, MessageCircle } from "lucide-react";
 import { products, formatPrice, CATEGORY_LABELS, type Category, type Product } from "@/data/products";
 import { productMessage, waLink } from "@/lib/whatsapp";
 import { useEnquiry } from "./enquiry";
-
-const ICONS: Record<Category, typeof Smartphone> = {
-  iphones: Smartphone, sneakers: Footprints,
-};
+import { ProductImage } from "./product-image";
+import { Button } from "./ui/button";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useEnquiry();
   const [size, setSize] = useState("");
-  const Icon = ICONS[product.category];
   const needsSize = !!product.listedSizes?.length;
 
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
       <div className="relative aspect-square overflow-hidden bg-secondary">
-        {product.image ? (
-          <img src={product.image} alt={`${product.name}${product.storage ? ` ${product.storage}` : ""}`} loading="lazy" className="size-full object-cover transition duration-500 md:group-hover:scale-105" />
-        ) : (
-          <div className="bg-glow flex size-full flex-col items-center justify-center gap-3 p-4 text-center transition duration-500 md:group-hover:scale-105">
-            <Icon className="size-12 text-primary/70" strokeWidth={1.4} aria-hidden />
-            <span className="font-display text-sm font-bold leading-tight">{product.name}</span>
-            <span className="text-[11px] uppercase tracking-widest text-muted-foreground">Photo coming soon</span>
-          </div>
-        )}
+        <ProductImage src={product.image} alt={`${product.name}${product.storage ? ` ${product.storage}` : ""}`} />
         <span className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[11px] font-semibold backdrop-blur">{CATEGORY_LABELS[product.category]}</span>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
@@ -40,7 +29,7 @@ export function ProductCard({ product }: { product: Product }) {
             Listed sizes — stock to be confirmed
             <select value={size} onChange={(e) => setSize(e.target.value)} className="mt-1 w-full rounded-lg border bg-input/40 px-3 py-2 text-sm text-foreground">
               <option value="">Choose a size (optional)</option>
-              {product.listedSizes!.map((s) => <option key={s} value={s}>Size {s}</option>)}
+              {product.listedSizes?.map((s) => <option key={s} value={s}>Size {s}</option>)}
             </select>
           </label>
         )}
@@ -51,10 +40,10 @@ export function ProductCard({ product }: { product: Product }) {
             className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-primary px-3 py-2.5 text-sm font-bold text-primary-foreground transition hover:brightness-110 active:scale-[0.97]">
             <MessageCircle className="size-4" /> Enquire
           </a>
-          <button onClick={() => add(product.id, size || undefined)} aria-label={`Add ${product.name} to enquiry list`}
+          <Button variant="outline" size="icon" onClick={() => add(product.id, size || undefined)} aria-label={`Add ${product.name} to enquiry list`}
             className="grid size-10 shrink-0 place-items-center rounded-full border transition hover:border-primary hover:text-primary active:scale-90">
             <Plus className="size-5" />
-          </button>
+          </Button>
         </div>
       </div>
     </article>
@@ -101,9 +90,9 @@ export function Catalogue({ categories }: { categories?: Category[] }) {
       {chips.length > 1 && (
         <div className="-mx-1 mb-6 flex gap-2 overflow-x-auto px-1 pb-1">
           {(["all", ...chips] as const).map((c) => (
-            <button key={c} onClick={() => setCat(c)} className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === c ? "border-primary bg-primary text-primary-foreground" : "hover:border-primary/50"}`}>
+            <Button variant="outline" key={c} onClick={() => setCat(c)} className={`h-auto shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === c ? "border-primary bg-primary text-primary-foreground" : "hover:border-primary/50"}`}>
               {c === "all" ? "All" : CATEGORY_LABELS[c]}
-            </button>
+            </Button>
           ))}
         </div>
       )}
