@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sneaker Squad — Sneakers, iPhones & Streetwear" },
+      { title: "Sneaker Squad — Sneakers & iPhones" },
       { name: "description", content: "Sneaker Squad: sneakers and iPhones. Enquire on WhatsApp." },
       { property: "og:title", content: "Sneaker Squad" },
       { property: "og:description", content: "Sneakers and iPhones. Enquire on WhatsApp." },

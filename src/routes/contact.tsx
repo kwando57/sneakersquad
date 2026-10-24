@@ -10,6 +10,8 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact & Delivery | Sneaker Squad" },
       { name: "description", content: "Contact Sneaker Squad on WhatsApp at +27 68 211 5106. Delivery options include PEP Paxi and couriers — confirm with us." },
       { property: "og:title", content: "Contact & Delivery | Sneaker Squad" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "WhatsApp Sneaker Squad and ask about delivery options." },
     ],
   }),

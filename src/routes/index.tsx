@@ -1,27 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Layers, MessageCircle, Truck, UserRound } from "lucide-react";
-import hero from "@/assets/hero.jpg";
-import catIphones from "@/assets/cat-iphones.jpg";
-import catSneakers from "@/assets/cat-sneakers.jpg";
 import { products } from "@/data/products";
 import { ProductGrid } from "@/components/catalogue";
 import { Reveal, WhatsAppButton } from "@/components/layout";
+import { ProductImage } from "@/components/product-image";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Sneaker Squad — Your Style. Your Tech. Your Squad." },
-      { name: "description", content: "Browse sneakers, iPhones, streetwear and tech essentials at Sneaker Squad, South Africa. Enquire and order on WhatsApp." },
+      { name: "description", content: "Browse sneakers and iPhones at Sneaker Squad, South Africa. Enquire and order on WhatsApp." },
       { property: "og:title", content: "Sneaker Squad — Your Style. Your Tech. Your Squad." },
-      { property: "og:description", content: "Sneakers, iPhones, streetwear and tech essentials. Enquire on WhatsApp." },
+      { property: "og:description", content: "Sneakers and iPhones. Enquire on WhatsApp." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
 });
 
 const CATS = [
-  { to: "/iphones", label: "iPhones", img: catIphones },
-  { to: "/sneakers", label: "Sneakers", img: catSneakers },
+  { to: "/iphones", label: "iPhones" },
+  { to: "/sneakers", label: "Sneakers" },
 ] as const;
 
 const WHY = [
@@ -36,8 +36,6 @@ function Home() {
   return (
     <>
       <section className="relative isolate overflow-hidden">
-        <img src={hero} alt="Grey and white sneakers next to a smartphone under blue light" width={1600} height={1008} className="absolute inset-0 -z-10 size-full object-cover object-[70%_center]" />
-        <div className="bg-hero-fade absolute inset-0 -z-10" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
         <div className="container-x flex min-h-[78vh] flex-col justify-center py-20">
           <p className="animate-hero text-xs font-bold uppercase tracking-[0.3em] text-primary">Sneaker Squad · South Africa</p>
@@ -45,7 +43,7 @@ function Home() {
             YOUR STYLE.<br />YOUR TECH.<br /><span className="text-primary">YOUR SQUAD.</span>
           </h1>
           <p className="animate-hero mt-6 max-w-xl text-base text-muted-foreground sm:text-lg" style={{ animationDelay: "240ms" }}>
-            Discover sneakers, iPhones, streetwear and everyday tech essentials at Sneaker Squad. Browse our collection and contact us on WhatsApp to enquire about your next purchase.
+            Discover sneakers and iPhones at Sneaker Squad. Browse our collection and contact us on WhatsApp to enquire about your next purchase.
           </p>
           <div className="animate-hero mt-8 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "360ms" }}>
             <Link to="/shop" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-bold text-primary-foreground transition hover:shadow-glow active:scale-[0.97]">
@@ -62,8 +60,7 @@ function Home() {
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
               <Link to={c.to} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border transition hover:border-primary/50">
-                <img src={c.img} alt={`${c.label} category`} loading="lazy" width={800} height={1008} className="size-full object-cover transition duration-500 md:group-hover:scale-105" />
-                <div className="bg-card-fade absolute inset-0" />
+                <ProductImage alt={`${c.label} category`} />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
                   <span className="font-display text-base font-bold">{c.label}</span>
                   <ArrowRight className="size-5 text-primary transition group-hover:translate-x-1" />

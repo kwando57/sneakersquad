@@ -7,6 +7,8 @@ export const Route = createFileRoute("/about")({
       { title: "About Us | Sneaker Squad" },
       { name: "description", content: "Sneaker Squad is a South African online store offering sneakers and iPhones." },
       { property: "og:title", content: "About Sneaker Squad" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "A South African online store for sneakers and iPhones." },
     ],
   }),
