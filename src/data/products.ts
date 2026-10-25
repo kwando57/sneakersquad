@@ -27,29 +27,31 @@ import imgIphone13 from "@/assets/products/iphone-13-128gb.jpg.asset.json";
 import imgIphone15 from "@/assets/products/iphone-15-256gb.jpg.asset.json";
 import imgIphone16 from "@/assets/products/iphone-16-256gb.jpg.asset.json";
 
+const url = (a: unknown) => (a as { url: string }).url;
+
 /** Real catalogue photos supplied by the owner, keyed by product id. */
 const PRODUCT_IMAGES: Record<string, string> = {
-  "nike-air-max-95": imgAirMax95.url,
-  "nike-sb-dunk": imgSbDunk.url,
-  "adidas-campus-x-bad-bunny": imgCampusBadBunny.url,
-  "timberland-x-nike-tn-combo": imgTnCombo.url,
-  "nike-portal": imgPortal.url,
-  "nike-tn": imgTn.url,
-  "puma-mayze": imgMayze.url,
-  "new-balance-550": imgNb550.url,
-  "vans-old-skool-checkerboard": imgVansCheckerboard.url,
-  "nike-furyosa": imgFuryosa.url,
-  "air-jordan-1-high": imgJordan1High.url,
-  "airforce-shell": imgAirforceShell.url,
-  "adidas-niteball": imgNiteball.url,
-  "nike-shox-tl": imgShoxTl.url,
-  "customised-airforce": imgCustomisedAirforce.url,
-  "af1-nike-portal-bundle": imgAf1PortalBundle.url,
-  "iphone-xr-64gb": imgIphoneXr.url,
-  "iphone-11-64gb": imgIphone11.url,
-  "iphone-13-128gb": imgIphone13.url,
-  "iphone-15-128gb": imgIphone15.url,
-  "iphone-16": imgIphone16.url,
+  "nike-air-max-95": url(imgAirMax95),
+  "nike-sb-dunk": url(imgSbDunk),
+  "adidas-campus-x-bad-bunny": url(imgCampusBadBunny),
+  "timberland-x-nike-tn-combo": url(imgTnCombo),
+  "nike-portal": url(imgPortal),
+  "nike-tn": url(imgTn),
+  "puma-mayze": url(imgMayze),
+  "new-balance-550": url(imgNb550),
+  "vans-old-skool-checkerboard": url(imgVansCheckerboard),
+  "nike-furyosa": url(imgFuryosa),
+  "air-jordan-1-high": url(imgJordan1High),
+  "airforce-shell": url(imgAirforceShell),
+  "adidas-niteball": url(imgNiteball),
+  "nike-shox-tl": url(imgShoxTl),
+  "customised-airforce": url(imgCustomisedAirforce),
+  "af1-nike-portal-bundle": url(imgAf1PortalBundle),
+  "iphone-xr-64gb": url(imgIphoneXr),
+  "iphone-11-64gb": url(imgIphone11),
+  "iphone-13-128gb": url(imgIphone13),
+  "iphone-15-128gb": url(imgIphone15),
+  "iphone-16": url(imgIphone16),
 };
 
 export type Category = "iphones" | "sneakers";
