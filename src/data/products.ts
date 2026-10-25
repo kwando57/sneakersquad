@@ -133,7 +133,7 @@ export const products: Product[] = [
     const id = slug(`${name} ${storage ?? ""}`);
     return {
       id, name, storage, price, category: "iphones" as const, availability: "confirm" as const,
-      featured: FEATURED.has(id),
+      featured: FEATURED.has(id), image: PRODUCT_IMAGES[id],
       ownerNote: storage ? undefined : "Storage capacity not supplied — owner to confirm.",
     };
   }),
@@ -141,7 +141,7 @@ export const products: Product[] = [
     const id = slug(name);
     return {
       id, name, price, listedSizes, ownerNote, category: "sneakers" as const,
-      availability: "confirm" as const, featured: FEATURED.has(id),
+      availability: "confirm" as const, featured: FEATURED.has(id), image: PRODUCT_IMAGES[id],
     };
   }),
 ];
