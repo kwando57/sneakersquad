@@ -5,6 +5,53 @@
  * availability: only set "in-stock" / "sold-out" once the owner confirms; otherwise "confirm".
  * image: import a real product photo from src/assets and set it here when supplied.
  */
+import imgAirMax95 from "@/assets/products/nike-air-max-95.jpg.asset.json";
+import imgSbDunk from "@/assets/products/nike-sb-dunk.jpg.asset.json";
+import imgCampusBadBunny from "@/assets/products/adidas-campus-bad-bunny.jpg.asset.json";
+import imgTnCombo from "@/assets/products/timberland-nike-tn-combo.jpg.asset.json";
+import imgPortal from "@/assets/products/nike-portal.jpg.asset.json";
+import imgTn from "@/assets/products/nike-tn.jpg.asset.json";
+import imgMayze from "@/assets/products/puma-mayze.jpg.asset.json";
+import imgNb550 from "@/assets/products/new-balance-550.jpg.asset.json";
+import imgVansCheckerboard from "@/assets/products/vans-old-skool-checkerboard.jpg.asset.json";
+import imgFuryosa from "@/assets/products/nike-furyosa.jpg.asset.json";
+import imgJordan1High from "@/assets/products/air-jordan-1-high.jpg.asset.json";
+import imgAirforceShell from "@/assets/products/airforce-shell.jpg.asset.json";
+import imgNiteball from "@/assets/products/adidas-niteball.jpg.asset.json";
+import imgShoxTl from "@/assets/products/nike-shox-tl.jpg.asset.json";
+import imgCustomisedAirforce from "@/assets/products/customised-airforce.jpg.asset.json";
+import imgAf1PortalBundle from "@/assets/products/af1-portal-bundle.jpg.asset.json";
+import imgIphoneXr from "@/assets/products/iphone-xr.jpg.asset.json";
+import imgIphone11 from "@/assets/products/iphone-11-64gb.jpg.asset.json";
+import imgIphone13 from "@/assets/products/iphone-13-128gb.jpg.asset.json";
+import imgIphone15 from "@/assets/products/iphone-15-256gb.jpg.asset.json";
+import imgIphone16 from "@/assets/products/iphone-16-256gb.jpg.asset.json";
+
+/** Real catalogue photos supplied by the owner, keyed by product id. */
+const PRODUCT_IMAGES: Record<string, string> = {
+  "nike-air-max-95": imgAirMax95.url,
+  "nike-sb-dunk": imgSbDunk.url,
+  "adidas-campus-x-bad-bunny": imgCampusBadBunny.url,
+  "timberland-x-nike-tn-combo": imgTnCombo.url,
+  "nike-portal": imgPortal.url,
+  "nike-tn": imgTn.url,
+  "puma-mayze": imgMayze.url,
+  "new-balance-550": imgNb550.url,
+  "vans-old-skool-checkerboard": imgVansCheckerboard.url,
+  "nike-furyosa": imgFuryosa.url,
+  "air-jordan-1-high": imgJordan1High.url,
+  "airforce-shell": imgAirforceShell.url,
+  "adidas-niteball": imgNiteball.url,
+  "nike-shox-tl": imgShoxTl.url,
+  "customised-airforce": imgCustomisedAirforce.url,
+  "af1-nike-portal-bundle": imgAf1PortalBundle.url,
+  "iphone-xr-64gb": imgIphoneXr.url,
+  "iphone-11-64gb": imgIphone11.url,
+  "iphone-13-128gb": imgIphone13.url,
+  "iphone-15-128gb": imgIphone15.url,
+  "iphone-16": imgIphone16.url,
+};
+
 export type Category = "iphones" | "sneakers";
 export type Availability = "confirm" | "in-stock" | "sold-out";
 
