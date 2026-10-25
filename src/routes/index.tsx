@@ -4,6 +4,10 @@ import { products } from "@/data/products";
 import { ProductGrid } from "@/components/catalogue";
 import { Reveal, WhatsAppButton } from "@/components/layout";
 import { ProductImage } from "@/components/product-image";
+import imgCatIphones from "@/assets/products/iphone-16-256gb.jpg.asset.json";
+import imgCatSneakers from "@/assets/products/nike-sb-dunk.jpg.asset.json";
+
+const assetUrl = (a: unknown) => (a as { url: string }).url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,8 +24,8 @@ export const Route = createFileRoute("/")({
 });
 
 const CATS = [
-  { to: "/iphones", label: "iPhones" },
-  { to: "/sneakers", label: "Sneakers" },
+  { to: "/iphones", label: "iPhones", image: assetUrl(imgCatIphones) },
+  { to: "/sneakers", label: "Sneakers", image: assetUrl(imgCatSneakers) },
 ] as const;
 
 const WHY = [
@@ -60,7 +64,7 @@ function Home() {
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
               <Link to={c.to} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border transition hover:border-primary/50">
-                <ProductImage alt={`${c.label} category`} />
+                <ProductImage src={c.image} alt={`${c.label} category`} />
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
                   <span className="font-display text-base font-bold">{c.label}</span>
                   <ArrowRight className="size-5 text-primary transition group-hover:translate-x-1" />

@@ -5,6 +5,55 @@
  * availability: only set "in-stock" / "sold-out" once the owner confirms; otherwise "confirm".
  * image: import a real product photo from src/assets and set it here when supplied.
  */
+import imgAirMax95 from "@/assets/products/nike-air-max-95.jpg.asset.json";
+import imgSbDunk from "@/assets/products/nike-sb-dunk.jpg.asset.json";
+import imgCampusBadBunny from "@/assets/products/adidas-campus-bad-bunny.jpg.asset.json";
+import imgTnCombo from "@/assets/products/timberland-nike-tn-combo.jpg.asset.json";
+import imgPortal from "@/assets/products/nike-portal.jpg.asset.json";
+import imgTn from "@/assets/products/nike-tn.jpg.asset.json";
+import imgMayze from "@/assets/products/puma-mayze.jpg.asset.json";
+import imgNb550 from "@/assets/products/new-balance-550.jpg.asset.json";
+import imgVansCheckerboard from "@/assets/products/vans-old-skool-checkerboard.jpg.asset.json";
+import imgFuryosa from "@/assets/products/nike-furyosa.jpg.asset.json";
+import imgJordan1High from "@/assets/products/air-jordan-1-high.jpg.asset.json";
+import imgAirforceShell from "@/assets/products/airforce-shell.jpg.asset.json";
+import imgNiteball from "@/assets/products/adidas-niteball.jpg.asset.json";
+import imgShoxTl from "@/assets/products/nike-shox-tl.jpg.asset.json";
+import imgCustomisedAirforce from "@/assets/products/customised-airforce.jpg.asset.json";
+import imgAf1PortalBundle from "@/assets/products/af1-portal-bundle.jpg.asset.json";
+import imgIphoneXr from "@/assets/products/iphone-xr.jpg.asset.json";
+import imgIphone11 from "@/assets/products/iphone-11-64gb.jpg.asset.json";
+import imgIphone13 from "@/assets/products/iphone-13-128gb.jpg.asset.json";
+import imgIphone15 from "@/assets/products/iphone-15-256gb.jpg.asset.json";
+import imgIphone16 from "@/assets/products/iphone-16-256gb.jpg.asset.json";
+
+const url = (a: unknown) => (a as { url: string }).url;
+
+/** Real catalogue photos supplied by the owner, keyed by product id. */
+const PRODUCT_IMAGES: Record<string, string> = {
+  "nike-air-max-95": url(imgAirMax95),
+  "nike-sb-dunk": url(imgSbDunk),
+  "adidas-campus-x-bad-bunny": url(imgCampusBadBunny),
+  "timberland-x-nike-tn-combo": url(imgTnCombo),
+  "nike-portal": url(imgPortal),
+  "nike-tn": url(imgTn),
+  "puma-mayze": url(imgMayze),
+  "new-balance-550": url(imgNb550),
+  "vans-old-skool-checkerboard": url(imgVansCheckerboard),
+  "nike-furyosa": url(imgFuryosa),
+  "air-jordan-1-high": url(imgJordan1High),
+  "airforce-shell": url(imgAirforceShell),
+  "adidas-niteball": url(imgNiteball),
+  "nike-shox-tl": url(imgShoxTl),
+  "customised-airforce": url(imgCustomisedAirforce),
+  "af1-nike-portal-bundle": url(imgAf1PortalBundle),
+  "iphone-xr-64gb": url(imgIphoneXr),
+  "iphone-11-64gb": url(imgIphone11),
+  "iphone-13-128gb": url(imgIphone13),
+  "iphone-15-128gb": url(imgIphone15),
+  "iphone-16": url(imgIphone16),
+};
+
 export type Category = "iphones" | "sneakers";
 export type Availability = "confirm" | "in-stock" | "sold-out";
 
@@ -86,7 +135,7 @@ export const products: Product[] = [
     const id = slug(`${name} ${storage ?? ""}`);
     return {
       id, name, storage, price, category: "iphones" as const, availability: "confirm" as const,
-      featured: FEATURED.has(id),
+      featured: FEATURED.has(id), image: PRODUCT_IMAGES[id],
       ownerNote: storage ? undefined : "Storage capacity not supplied — owner to confirm.",
     };
   }),
@@ -94,7 +143,7 @@ export const products: Product[] = [
     const id = slug(name);
     return {
       id, name, price, listedSizes, ownerNote, category: "sneakers" as const,
-      availability: "confirm" as const, featured: FEATURED.has(id),
+      availability: "confirm" as const, featured: FEATURED.has(id), image: PRODUCT_IMAGES[id],
     };
   }),
 ];
