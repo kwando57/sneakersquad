@@ -58,22 +58,22 @@ const iphones: [string, string | undefined, number][] = [
 ];
 
 const sneakers: [string, number, string[] | undefined, string?][] = [
-  ["Nike Air Max 95", 1400, undefined],
-  ["Nike SB Dunk", 1300, range(3, 10)],
-  ["Adidas Campus x Bad Bunny", 1400, range(3, 9)],
-  ["Timberland x Nike TN Combo", 2600, undefined],
-  ["Nike Portal", 1400, undefined],
-  ["Nike TN", 1400, undefined],
-  ["Puma Mayze", 1200, range(3, 9)],
-  ["New Balance 550", 1400, range(3, 9)],
-  ["Vans Old Skool Checkerboard", 1300, range(3, 9)],
-  ["Nike Furyosa", 1400, range(4, 9)],
-  ["Air Jordan 1 High", 1400, range(3, 9)],
-  ["Airforce Shell", 1400, range(3, 8)],
-  ["Adidas Niteball", 1500, range(3, 9)],
-  ["Nike Shox TL", 1400, undefined],
-  ["Customised Airforce", 1300, range(3, 12)],
-  ["AF1 + Nike Portal Bundle", 3500, undefined, "Listing mentions free delivery — owner to confirm before this is published."],
+  ["Nike Air Max 95", 1400, range(1, 10)],
+  ["Nike SB Dunk", 1300, range(1, 10)],
+  ["Adidas Campus x Bad Bunny", 1400, range(1, 10)],
+  ["Timberland x Nike TN Combo", 2600, range(1, 10)],
+  ["Nike Portal", 1400, range(1, 10)],
+  ["Nike TN", 1400, range(1, 10)],
+  ["Puma Mayze", 1200, range(1, 10)],
+  ["New Balance 550", 1400, range(1, 10)],
+  ["Vans Old Skool Checkerboard", 1300, range(1, 10)],
+  ["Nike Furyosa", 1400, range(1, 10)],
+  ["Air Jordan 1 High", 1400, range(1, 10)],
+  ["Airforce Shell", 1400, range(1, 10)],
+  ["Adidas Niteball", 1500, range(1, 10)],
+  ["Nike Shox TL", 1400, range(1, 10)],
+  ["Customised Airforce", 1300, range(1, 10)],
+  ["AF1 + Nike Portal Bundle", 3500, range(1, 10), "Listing mentions free delivery — owner to confirm before this is published."],
 ];
 
 const FEATURED = new Set([
