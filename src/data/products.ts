@@ -92,7 +92,6 @@ const iphones: [string, string | undefined, number][] = [
   ["iPhone 14 Pro", "128GB", 12800],
   ["iPhone 14 Pro Max", "128GB", 14500],
   ["iPhone 15", "128GB", 13300],
-  ["iPhone 15 Plus", "128GB", 14000],
   ["iPhone 15 Pro", "128GB", 15800],
   ["iPhone 15 Pro Max", "256GB", 18500],
   ["iPhone 16", "128GB", 16500],
