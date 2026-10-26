@@ -63,11 +63,13 @@ function Home() {
         <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
-              <Link to={c.to} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border transition hover:border-primary/50">
-                <ProductImage src={c.image} alt={`${c.label} category`} />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
-                  <span className="font-display text-base font-bold">{c.label}</span>
-                  <ArrowRight className="size-5 text-primary transition group-hover:translate-x-1" />
+              <Link to={c.to} className="group flex aspect-[4/5] flex-col overflow-hidden rounded-2xl border bg-card p-3 transition hover:border-primary/50">
+                <div className="flex-1 overflow-hidden rounded-xl bg-surface-product">
+                  <ProductImage src={c.image} alt={`${c.label} category`} />
+                </div>
+                <div className="mt-3 flex items-center justify-between gap-2 px-1">
+                  <span className="font-display text-sm font-bold sm:text-base">{c.label}</span>
+                  <ArrowRight className="size-5 shrink-0 text-primary transition group-hover:translate-x-1" />
                 </div>
               </Link>
             </Reveal>
