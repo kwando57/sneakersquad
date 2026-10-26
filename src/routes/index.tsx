@@ -4,7 +4,7 @@ import { products } from "@/data/products";
 import { ProductGrid } from "@/components/catalogue";
 import { Reveal, WhatsAppButton } from "@/components/layout";
 import { ProductImage } from "@/components/product-image";
-import imgCatIphones from "@/assets/products/iphone-16-256gb.jpg.asset.json";
+import imgCatIphones from "@/assets/products/iphone-15-pro-max-blue-titanium.jpg.asset.json";
 import imgCatSneakers from "@/assets/products/nike-sb-dunk.jpg.asset.json";
 
 const assetUrl = (a: unknown) => (a as { url: string }).url;
