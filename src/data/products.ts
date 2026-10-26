@@ -21,19 +21,25 @@ import imgNiteball from "@/assets/products/adidas-niteball.jpg.asset.json";
 import imgShoxTl from "@/assets/products/nike-shox-tl.jpg.asset.json";
 import imgCustomisedAirforce from "@/assets/products/customised-airforce.jpg.asset.json";
 import imgAf1PortalBundle from "@/assets/products/af1-portal-bundle.jpg.asset.json";
+import imgXrWhite from "@/assets/products/iphone-xr-white.jpeg.asset.json";
+import img17Black from "@/assets/products/iphone-17-black.jpeg.asset.json";
+import img15ProMaxBlue from "@/assets/products/iphone-15-pro-max-blue-titanium.jpg.asset.json";
 
 const url = (a: unknown) => (a as { url: string }).url;
 
 /** iPhone photos matched to the owner's price poster; file name = product id. */
 const IPHONE_IMAGES: Record<string, string> = Object.fromEntries(
   Object.entries(import.meta.glob("@/assets/iphones/*.asset.json", { eager: true, import: "default" })).map(
-    ([path, mod]) => [path.split("/").pop()!.replace(/\.(jpe?g|png)\.asset\.json$/, ""), url(mod)],
+    ([path, mod]) => [(path.split("/").pop() ?? "").replace(/\.(jpe?g|png)\.asset\.json$/, ""), url(mod)],
   ),
 );
 
 /** Real catalogue photos supplied by the owner, keyed by product id. */
 const PRODUCT_IMAGES: Record<string, string> = {
   ...IPHONE_IMAGES,
+  "iphone-xr-64gb": url(imgXrWhite),
+  "iphone-15-pro-max-256gb": url(img15ProMaxBlue),
+  "iphone-17-256gb": url(img17Black),
   "nike-air-max-95": url(imgAirMax95),
   "nike-sb-dunk": url(imgSbDunk),
   "adidas-campus-x-bad-bunny": url(imgCampusBadBunny),
