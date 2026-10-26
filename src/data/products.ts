@@ -21,16 +21,19 @@ import imgNiteball from "@/assets/products/adidas-niteball.jpg.asset.json";
 import imgShoxTl from "@/assets/products/nike-shox-tl.jpg.asset.json";
 import imgCustomisedAirforce from "@/assets/products/customised-airforce.jpg.asset.json";
 import imgAf1PortalBundle from "@/assets/products/af1-portal-bundle.jpg.asset.json";
-import imgIphoneXr from "@/assets/products/iphone-xr.jpg.asset.json";
-import imgIphone11 from "@/assets/products/iphone-11-64gb.jpg.asset.json";
-import imgIphone13 from "@/assets/products/iphone-13-128gb.jpg.asset.json";
-import imgIphone15 from "@/assets/products/iphone-15-256gb.jpg.asset.json";
-import imgIphone16 from "@/assets/products/iphone-16-256gb.jpg.asset.json";
 
 const url = (a: unknown) => (a as { url: string }).url;
 
+/** iPhone photos matched to the owner's price poster; file name = product id. */
+const IPHONE_IMAGES: Record<string, string> = Object.fromEntries(
+  Object.entries(import.meta.glob("@/assets/iphones/*.asset.json", { eager: true, import: "default" })).map(
+    ([path, mod]) => [path.split("/").pop()!.replace(/\.(jpe?g|png)\.asset\.json$/, ""), url(mod)],
+  ),
+);
+
 /** Real catalogue photos supplied by the owner, keyed by product id. */
 const PRODUCT_IMAGES: Record<string, string> = {
+  ...IPHONE_IMAGES,
   "nike-air-max-95": url(imgAirMax95),
   "nike-sb-dunk": url(imgSbDunk),
   "adidas-campus-x-bad-bunny": url(imgCampusBadBunny),
@@ -47,11 +50,6 @@ const PRODUCT_IMAGES: Record<string, string> = {
   "nike-shox-tl": url(imgShoxTl),
   "customised-airforce": url(imgCustomisedAirforce),
   "af1-nike-portal-bundle": url(imgAf1PortalBundle),
-  "iphone-xr-64gb": url(imgIphoneXr),
-  "iphone-11-64gb": url(imgIphone11),
-  "iphone-13-128gb": url(imgIphone13),
-  "iphone-15-128gb": url(imgIphone15),
-  "iphone-16": url(imgIphone16),
 };
 
 export type Category = "iphones" | "sneakers";
@@ -97,7 +95,7 @@ const iphones: [string, string | undefined, number][] = [
   ["iPhone 15 Plus", "128GB", 14000],
   ["iPhone 15 Pro", "128GB", 15800],
   ["iPhone 15 Pro Max", "256GB", 18500],
-  ["iPhone 16", undefined, 16500],
+  ["iPhone 16", "128GB", 16500],
   ["iPhone 16 Plus", "128GB", 18000],
   ["iPhone 16 Pro", "128GB", 20000],
   ["iPhone 16 Pro Max", "256GB", 24500],
