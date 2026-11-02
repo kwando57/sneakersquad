@@ -49,8 +49,22 @@ describe("Enquiry list", () => {
 
     const am95 = getProduct("nike-air-max-95")!;
     expect(screen.getAllByRole("button", { name: `Remove ${am95.name}` })).toHaveLength(2);
-    expect(screen.getByText("Size 5")).toBeTruthy();
-    expect(screen.getByText("Size 8")).toBeTruthy();
+    const selects = screen.getAllByRole("combobox", { name: `Size for ${am95.name}` }) as HTMLSelectElement[];
+    expect(selects.map((s) => s.value)).toEqual(["5", "8"]);
+  });
+
+  it("changing one entry's size leaves the duplicate unchanged", () => {
+    render(
+      <EnquiryProvider>
+        <AddDifferentSizes />
+      </EnquiryProvider>,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "add two sizes" }));
+    fireEvent.click(screen.getByRole("button", { name: "View list" }));
+    const am95 = getProduct("nike-air-max-95")!;
+    const selects = () => screen.getAllByRole("combobox", { name: `Size for ${am95.name}` }) as HTMLSelectElement[];
+    fireEvent.change(selects()[0]!, { target: { value: "10" } });
+    expect(selects().map((s) => s.value)).toEqual(["10", "8"]);
   });
 });
 
