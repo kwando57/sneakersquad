@@ -48,15 +48,17 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
     return () => clearTimeout(t);
   }, [toast]);
 
+  // Legacy saved lists have no uid — fall back to the old id|size key so they still render and remove.
+  const legacyKey = (i: Item) => i.uid || `${i.id}|${i.size ?? ""}`;
   const items = raw
-    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: i.uid }))
+    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: legacyKey(i) }))
     .filter((i) => i.product);
 
   return (
     <EnquiryCtx.Provider
       value={{
         items, add, open, setOpen, bump,
-        remove: (key) => persist(raw.filter((i) => i.uid !== key)),
+        remove: (key) => persist(raw.filter((i) => legacyKey(i) !== key)),
         clear: () => persist([]),
       }}
     >
