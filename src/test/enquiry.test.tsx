@@ -26,10 +26,10 @@ describe("Enquiry list", () => {
       </EnquiryProvider>,
     );
 
-    await userEvent.click(screen.getByRole("button", { name: "add twice" }));
+    fireEvent.click(screen.getByRole("button", { name: "add twice" }));
 
     // Open the drawer via the toast's "View list" link.
-    await userEvent.click(screen.getByRole("button", { name: "View list" }));
+    fireEvent.click(screen.getByRole("button", { name: "View list" }));
 
     const sbDunk = getProduct("nike-sb-dunk")!;
     const entries = screen.getAllByText(new RegExp(`^${sbDunk.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`));
@@ -44,8 +44,8 @@ describe("Enquiry list", () => {
       </EnquiryProvider>,
     );
 
-    await userEvent.click(screen.getByRole("button", { name: "add two sizes" }));
-    await userEvent.click(screen.getByRole("button", { name: "View list" }));
+    fireEvent.click(screen.getByRole("button", { name: "add two sizes" }));
+    fireEvent.click(screen.getByRole("button", { name: "View list" }));
 
     const am95 = getProduct("nike-air-max-95")!;
     expect(screen.getAllByRole("button", { name: `Remove ${am95.name}` })).toHaveLength(2);
