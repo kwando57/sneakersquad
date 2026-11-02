@@ -3,7 +3,7 @@ import { getProduct, formatPrice, type Product } from "@/data/products";
 import { listMessage, waLink } from "@/lib/whatsapp";
 import { X, Trash2, MessageCircle } from "lucide-react";
 
-interface Item { id: string; size?: string | undefined }
+interface Item { id: string; size?: string | undefined; uid: string }
 interface Ctx {
   items: { product: Product; size?: string | undefined; key: string }[];
   add: (id: string, size?: string) => void;
@@ -31,9 +31,9 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
   };
 
   const add = useCallback((id: string, size?: string) => {
+    // Every add creates its own entry — the same product may be enquired about more than once.
     setRaw((prev) => {
-      if (prev.some((i) => i.id === id && i.size === size)) return prev;
-      const next = [...prev, { id, size }];
+      const next = [...prev, { id, size, uid: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}` }];
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch { /* ignore */ }
       return next;
     });
@@ -48,15 +48,17 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
     return () => clearTimeout(t);
   }, [toast]);
 
+  // Legacy saved lists have no uid — fall back to the old id|size key so they still render and remove.
+  const legacyKey = (i: Item) => i.uid || `${i.id}|${i.size ?? ""}`;
   const items = raw
-    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: `${i.id}|${i.size ?? ""}` }))
+    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: legacyKey(i) }))
     .filter((i) => i.product);
 
   return (
     <EnquiryCtx.Provider
       value={{
         items, add, open, setOpen, bump,
-        remove: (key) => persist(raw.filter((i) => `${i.id}|${i.size ?? ""}` !== key)),
+        remove: (key) => persist(raw.filter((i) => legacyKey(i) !== key)),
         clear: () => persist([]),
       }}
     >
