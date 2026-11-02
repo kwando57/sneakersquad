@@ -49,14 +49,14 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
   }, [toast]);
 
   const items = raw
-    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: `${i.id}|${i.size ?? ""}` }))
+    .map((i) => ({ product: getProduct(i.id)!, size: i.size, key: i.uid }))
     .filter((i) => i.product);
 
   return (
     <EnquiryCtx.Provider
       value={{
         items, add, open, setOpen, bump,
-        remove: (key) => persist(raw.filter((i) => `${i.id}|${i.size ?? ""}` !== key)),
+        remove: (key) => persist(raw.filter((i) => i.uid !== key)),
         clear: () => persist([]),
       }}
     >
