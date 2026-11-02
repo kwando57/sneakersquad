@@ -78,6 +78,14 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  select {
+    color-scheme: dark;
+    color: var(--color-foreground);
+  }
+  select option, select optgroup {
+    background-color: #0d1526;
+    color: #ffffff;
+  }
 }
 
 @utility bg-hero-fade { background: var(--gradient-hero); }
