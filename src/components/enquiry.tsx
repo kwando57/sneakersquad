@@ -8,6 +8,7 @@ interface Ctx {
   items: { product: Product; size?: string | undefined; key: string }[];
   add: (id: string, size?: string) => void;
   remove: (key: string) => void;
+  setSize: (key: string, size: string | undefined) => void;
   clear: () => void;
   open: boolean;
   setOpen: (v: boolean) => void;
@@ -60,6 +61,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
         items, add, open, setOpen, bump,
         remove: (key) => persist(raw.filter((i) => legacyKey(i) !== key)),
         clear: () => persist([]),
+        setSize: (key, size) => persist(raw.map((i) => (legacyKey(i) === key ? { ...i, size } : i))),
       }}
     >
       {children}
@@ -81,7 +83,7 @@ export const useEnquiry = () => {
 };
 
 function EnquiryDrawer() {
-  const { items, remove, clear, open, setOpen } = useEnquiry();
+  const { items, remove, setSize, clear, open, setOpen } = useEnquiry();
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
@@ -109,8 +111,22 @@ function EnquiryDrawer() {
                   <div>
                     <p className="font-semibold">{it.product.name}</p>
                     <p className="text-sm text-muted-foreground">
-                      {[it.product.storage, it.size && `Size ${it.size}`].filter(Boolean).join(" · ")}
+                      {[it.product.storage, !it.product.listedSizes?.length && it.size && `Size ${it.size}`].filter(Boolean).join(" · ")}
                     </p>
+                    {it.product.listedSizes?.length ? (
+                      <label className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                        Size
+                        <select
+                          value={it.size ?? ""}
+                          onChange={(e) => setSize(it.key, e.target.value || undefined)}
+                          aria-label={`Size for ${it.product.name}`}
+                          className="rounded-md border bg-background px-2 py-1 text-foreground"
+                        >
+                          <option value="">Choose size</option>
+                          {it.product.listedSizes.map((s) => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      </label>
+                    ) : null}
                     <p className="mt-1 font-bold text-accent">{formatPrice(it.product.price)}</p>
                   </div>
                   <button onClick={() => remove(it.key)} aria-label={`Remove ${it.product.name}`} className="rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground"><Trash2 className="size-4" /></button>
