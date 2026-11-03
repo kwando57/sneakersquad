@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ShoppingBag, MessageCircle } from "lucide-react";
 import { useEnquiry } from "./enquiry";
 import { generalMessage, waLink, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
+import { Button } from "./ui/button";
 
 export function Logo() {
   return (
@@ -46,16 +47,16 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <button onClick={() => openList(true)} aria-label={`Enquiry list, ${items.length} items`} className="relative rounded-full p-2.5 transition hover:bg-muted">
+           <Button variant="ghost" size="icon" onClick={() => openList(true)} aria-label={`Enquiry list, ${items.length} items`} className="relative">
             <ShoppingBag className="size-5" />
             {items.length > 0 && (
               <span key={bump} className="animate-pop absolute -right-0.5 -top-0.5 grid size-5 place-items-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground">{items.length}</span>
             )}
-          </button>
+           </Button>
           <a href={waLink(generalMessage)} target="_blank" rel="noopener noreferrer" className="hidden rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition hover:shadow-glow sm:inline-flex">WhatsApp</a>
-          <button onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open} className="rounded-full p-2.5 hover:bg-muted lg:hidden">
+           <Button variant="ghost" size="icon" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open} className="lg:hidden">
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+           </Button>
         </div>
       </div>
       <div className={`grid overflow-hidden transition-all duration-300 lg:hidden ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>

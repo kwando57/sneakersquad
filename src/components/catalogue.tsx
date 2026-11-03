@@ -12,15 +12,15 @@ export function ProductCard({ product }: { product: Product }) {
   const needsSize = !!product.listedSizes?.length;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border bg-card transition duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
-      <div className="relative aspect-square overflow-hidden bg-secondary">
+    <article className="group flex flex-col overflow-hidden rounded-lg border bg-card transition duration-300 hover:-translate-y-1 hover:border-primary/40">
+      <div className="relative aspect-square overflow-hidden bg-surface-product">
         <ProductImage src={product.image} alt={`${product.name}${product.storage ? ` ${product.storage}` : ""}`} />
         <span className="absolute left-3 top-3 rounded-full bg-background/80 px-2.5 py-1 text-[11px] font-semibold backdrop-blur">{CATEGORY_LABELS[product.category]}</span>
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-4">
+      <div className="flex flex-1 flex-col gap-2 p-3 sm:p-5">
         <h3 className="font-sans text-base font-bold leading-snug">{product.name}</h3>
         {product.storage && <span className="w-fit rounded-md border border-primary/40 px-2 py-0.5 text-xs font-bold text-accent">{product.storage}</span>}
-        <p className="text-xl font-extrabold">{formatPrice(product.price)}</p>
+        <p className="text-xl font-extrabold tabular-nums text-accent">{formatPrice(product.price)}</p>
         <p className="text-xs text-muted-foreground">
           {product.availability === "in-stock" ? "In stock" : product.availability === "sold-out" ? "Sold out" : "Availability: confirm on WhatsApp"}
         </p>
@@ -37,11 +37,11 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto flex gap-2 pt-2">
           <a href={waLink(productMessage(product, size || undefined))} target="_blank" rel="noopener noreferrer"
             aria-label={`Enquire about ${product.name} on WhatsApp`}
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-primary px-3 py-2.5 text-sm font-bold text-primary-foreground transition hover:brightness-110 active:scale-[0.97]">
+            className="flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-md bg-primary px-2 py-2.5 text-sm font-bold text-primary-foreground transition hover:brightness-110 active:scale-[0.97]">
             <MessageCircle className="size-4" /> Enquire
           </a>
           <Button variant="outline" size="icon" onClick={() => add(product.id, size || undefined)} aria-label={`Add ${product.name} to enquiry list`}
-            className="grid size-10 shrink-0 place-items-center rounded-full border transition hover:border-primary hover:text-primary active:scale-90">
+            className="grid size-10 shrink-0 place-items-center rounded-md border transition hover:border-primary hover:text-primary active:scale-90">
             <Plus className="size-5" />
           </Button>
         </div>

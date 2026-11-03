@@ -41,7 +41,7 @@ function Home() {
     <>
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
-        <div className="container-x flex min-h-[78vh] flex-col justify-center py-20">
+        <div className="container-x flex min-h-[min(640px,72vh)] flex-col justify-center py-14 md:py-20">
           <p className="animate-hero text-xs font-bold uppercase tracking-[0.3em] text-primary">Sneaker Squad · South Africa</p>
           <h1 className="animate-hero mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl" style={{ animationDelay: "120ms" }}>
             YOUR STYLE.<br />YOUR TECH.<br /><span className="text-primary">YOUR SQUAD.</span>
@@ -63,8 +63,8 @@ function Home() {
         <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
-              <Link to={c.to} className="group flex aspect-[4/5] flex-col overflow-hidden rounded-2xl border bg-card p-3 transition hover:border-primary/50">
-                <div className="flex-1 overflow-hidden rounded-xl bg-surface-product">
+               <Link to={c.to} className="group flex flex-col overflow-hidden rounded-lg border bg-card p-3 transition hover:border-primary/50">
+                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-surface-product">
                   <ProductImage src={c.image} alt={`${c.label} category`} />
                 </div>
                 <div className="mt-3 flex items-center justify-between gap-2 px-1">
@@ -90,7 +90,7 @@ function Home() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {WHY.map((w, i) => (
             <Reveal key={w.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border bg-card p-6">
+              <div className="h-full border-t border-primary/30 py-6 pr-4">
                 <w.icon className="size-7 text-primary" />
                 <h3 className="mt-4 font-sans text-lg font-bold">{w.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{w.text}</p>
@@ -100,10 +100,10 @@ function Home() {
         </div>
       </section>
 
-      <section className="container-x">
+      <section className="mt-10 border-y border-primary/20 bg-secondary/50">
         <Reveal>
-          <div className="bg-glow relative overflow-hidden rounded-3xl border border-primary/30 bg-card px-6 py-14 text-center md:py-20">
-            <h2 className="text-3xl font-extrabold md:text-5xl">FOUND SOMETHING YOU LIKE?</h2>
+          <div className="container-x py-14 text-center md:py-20">
+            <h2 className="text-2xl font-extrabold sm:text-3xl md:text-4xl">FOUND SOMETHING YOU LIKE?</h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Contact Sneaker Squad on WhatsApp to check availability, confirm the price and discuss delivery.</p>
             <WhatsAppButton className="mt-8 px-8 py-4">Chat With Us</WhatsAppButton>
           </div>
