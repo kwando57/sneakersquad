@@ -11,3 +11,4 @@
 
 - All product-image surfaces use the shared ProductImage component for uncropped photos and consistent missing/broken-image fallback.
 - Imported or downloaded approved media is stored through Lovable Assets pointers; original photo files remain unmodified to keep the repository lightweight and imagery faithful.
+- Calculate enquiry totals through the shared enquiry-total helper so the drawer and WhatsApp message count duplicate entries consistently and distinguish unpriced items.

@@ -38,7 +38,7 @@
 }
 
 :root {
-  --radius: 0.875rem;
+  --radius: 0.5rem;
   --background: oklch(0.15 0.03 260);
   --foreground: oklch(0.98 0.005 250);
   --card: oklch(0.2 0.02 258);
@@ -77,15 +77,21 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; text-wrap: balance; }
   select {
     color-scheme: dark;
     color: var(--color-foreground);
   }
   select option, select optgroup {
-    background-color: #0d1526;
-    color: #ffffff;
+    background-color: var(--background);
+    color: var(--foreground);
   }
+}
+
+@layer base {
+  input, select { min-height: 2.75rem; }
+  input:focus-visible, select:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  ::selection { background: var(--primary); color: var(--primary-foreground); }
 }
 
 @utility bg-hero-fade { background: var(--gradient-hero); }

@@ -1,4 +1,5 @@
 import { formatPrice, type Product } from "@/data/products";
+import { enquiryTotal } from "./enquiry-total";
 
 export const WHATSAPP_DISPLAY = "+27 68 211 5106";
 export const WHATSAPP_NUMBER = "27682115106";
@@ -18,10 +19,16 @@ const describe = (p: Product, size?: string) => {
 export const productMessage = (p: Product, size?: string) =>
   `Hi Sneaker Squad, I am interested in ${describe(p, size)} (listed at ${formatPrice(p.price)}). Please confirm the current price, availability and delivery options.`;
 
-export const listMessage = (items: { product: Product; size?: string | undefined }[]) =>
-  [
+export const listMessage = (items: { product: Product; size?: string | undefined }[]) => {
+  const total = enquiryTotal(items);
+  return [
     "Hi Sneaker Squad, I am interested in the following items:",
     ...items.map((it, i) => `${i + 1}. ${describe(it.product, it.size)} (listed at ${formatPrice(it.product.price)})`),
     "",
+    `${total.unpriced ? "Priced items subtotal" : "Listed items total"}: ${formatPrice(total.amount)}`,
+    ...(total.unpriced ? [`${total.unpriced} item(s): price on enquiry.`] : []),
+    "Delivery not included; final total to be confirmed.",
+    "",
     "Please confirm the current prices, availability and delivery options.",
   ].join("\n");
+};
