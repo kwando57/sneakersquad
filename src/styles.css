@@ -110,12 +110,22 @@
 @keyframes hero-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
 @keyframes toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @utility animate-hero { animation: hero-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 @utility animate-pop { animation: pop 0.45s ease; }
 @utility animate-toast { animation: toast-in 0.3s ease both; }
+@utility animate-marquee { animation: marquee 26s linear infinite; }
+
+.marquee:hover .animate-marquee { animation-play-state: paused; }
+
+.hero-glow {
+  background: radial-gradient(340px circle at var(--gx, 75%) var(--gy, 30%), oklch(0.72 0.16 225 / 16%), transparent 70%);
+  transition: background 0.15s ease-out;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .animate-marquee { animation: none; }
 }
