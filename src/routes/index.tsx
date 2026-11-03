@@ -59,16 +59,18 @@ function Home() {
         </div>
       </section>
 
+      <Marquee />
+
       <section className="container-x py-16">
         <Reveal><h2 className="text-2xl font-bold md:text-3xl">Shop by category</h2></Reveal>
         <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
-               <Link to={c.to} className="group flex flex-col overflow-hidden rounded-lg border bg-card p-3 transition hover:border-primary/50">
-                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-surface-product">
+               <Link to={c.to} className="group flex flex-col overflow-hidden rounded-lg border bg-card p-3 transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
+                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-surface-product transition-transform duration-500 group-hover:scale-[1.03]">
                   <ProductImage src={c.image} alt={`${c.label} category`} />
                 </div>
-                <div className="mt-3 flex items-center justify-between gap-2 px-1">
+                 <div className="mt-3 flex items-center justify-between gap-2 px-1">
                   <span className="font-display text-sm font-bold sm:text-base">{c.label}</span>
                   <ArrowRight className="size-5 shrink-0 text-primary transition group-hover:translate-x-1" />
                 </div>
@@ -83,7 +85,7 @@ function Home() {
           <h2 className="text-2xl font-bold md:text-3xl">Featured products</h2>
           <Link to="/shop" className="shrink-0 text-sm font-semibold text-primary hover:underline">View all →</Link>
         </Reveal>
-        <Reveal className="mt-8"><ProductGrid items={featured} /></Reveal>
+        <Reveal className="mt-8"><FeaturedCarousel items={featured} /></Reveal>
       </section>
 
       <section className="container-x py-16">
