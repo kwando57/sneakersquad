@@ -93,7 +93,7 @@ function Home() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {WHY.map((w, i) => (
             <Reveal key={w.title} delay={i * 80}>
-              <div className="h-full border-t border-primary/30 py-6 pr-4">
+              <div className="h-full border-t border-primary/30 py-6 pr-4 transition duration-300 hover:border-primary hover:bg-card/60">
                 <w.icon className="size-7 text-primary" />
                 <h3 className="mt-4 font-sans text-lg font-bold">{w.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{w.text}</p>
