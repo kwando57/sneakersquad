@@ -70,7 +70,7 @@ export function EnquiryProvider({ children }: { children: ReactNode }) {
     >
       {children}
       <EnquiryDrawer />
-      {toast && (
+      {toast && !open && (
         <div className="pointer-events-none fixed inset-x-0 bottom-6 z-[70] flex justify-center px-4"><div role="status" className="animate-toast pointer-events-auto w-full max-w-md rounded-xl border border-primary/40 bg-popover px-4 py-3 text-sm shadow-glow">
           <span className="font-semibold text-accent">✓ </span>{toast}
           <Button variant="link" onClick={() => { setToast(null); setOpen(true); }} className="ml-2 h-auto p-0 font-semibold">View list</Button>
