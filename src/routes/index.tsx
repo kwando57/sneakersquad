@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Layers, MessageCircle, Truck, UserRound } from "lucide-react";
 import { products } from "@/data/products";
-import { ProductGrid } from "@/components/catalogue";
+import { FeaturedCarousel, HeroGlow, Marquee } from "@/components/home-interactive";
 import { Reveal, WhatsAppButton } from "@/components/layout";
 import { ProductImage } from "@/components/product-image";
 import imgCatIphones from "@/assets/products/iphone-15-pro-max-blue-titanium.jpg.asset.json";
@@ -40,6 +40,7 @@ function Home() {
   return (
     <>
       <section className="relative isolate overflow-hidden">
+        <HeroGlow />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
         <div className="container-x flex min-h-[min(640px,72vh)] flex-col justify-center py-14 md:py-20">
           <p className="animate-hero text-xs font-bold uppercase tracking-[0.3em] text-primary">Sneaker Squad · South Africa</p>
@@ -58,16 +59,18 @@ function Home() {
         </div>
       </section>
 
+      <Marquee />
+
       <section className="container-x py-16">
         <Reveal><h2 className="text-2xl font-bold md:text-3xl">Shop by category</h2></Reveal>
         <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5">
           {CATS.map((c, i) => (
             <Reveal key={c.label} delay={i * 70}>
-               <Link to={c.to} className="group flex flex-col overflow-hidden rounded-lg border bg-card p-3 transition hover:border-primary/50">
-                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-surface-product">
+               <Link to={c.to} className="group flex flex-col overflow-hidden rounded-lg border bg-card p-3 transition duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
+                 <div className="aspect-[4/3] overflow-hidden rounded-md bg-surface-product transition-transform duration-500 group-hover:scale-[1.03]">
                   <ProductImage src={c.image} alt={`${c.label} category`} />
                 </div>
-                <div className="mt-3 flex items-center justify-between gap-2 px-1">
+                 <div className="mt-3 flex items-center justify-between gap-2 px-1">
                   <span className="font-display text-sm font-bold sm:text-base">{c.label}</span>
                   <ArrowRight className="size-5 shrink-0 text-primary transition group-hover:translate-x-1" />
                 </div>
@@ -82,7 +85,7 @@ function Home() {
           <h2 className="text-2xl font-bold md:text-3xl">Featured products</h2>
           <Link to="/shop" className="shrink-0 text-sm font-semibold text-primary hover:underline">View all →</Link>
         </Reveal>
-        <Reveal className="mt-8"><ProductGrid items={featured} /></Reveal>
+        <Reveal className="mt-8"><FeaturedCarousel items={featured} /></Reveal>
       </section>
 
       <section className="container-x py-16">
@@ -90,7 +93,7 @@ function Home() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {WHY.map((w, i) => (
             <Reveal key={w.title} delay={i * 80}>
-              <div className="h-full border-t border-primary/30 py-6 pr-4">
+              <div className="h-full border-t border-primary/30 py-6 pr-4 transition duration-300 hover:border-primary hover:bg-card/60">
                 <w.icon className="size-7 text-primary" />
                 <h3 className="mt-4 font-sans text-lg font-bold">{w.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{w.text}</p>
