@@ -40,6 +40,7 @@ function Home() {
   return (
     <>
       <section className="relative isolate overflow-hidden">
+        <HeroGlow />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-background to-transparent" />
         <div className="container-x flex min-h-[min(640px,72vh)] flex-col justify-center py-14 md:py-20">
           <p className="animate-hero text-xs font-bold uppercase tracking-[0.3em] text-primary">Sneaker Squad · South Africa</p>

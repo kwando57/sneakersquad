@@ -34,11 +34,27 @@ export function WhatsAppButton({ text = generalMessage, children = "Chat on What
   );
 }
 
+function ScrollProgress() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (ref.current) ref.current.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return <div ref={ref} aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-primary transition-transform duration-150" />;
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const { items, setOpen: openList, bump } = useEnquiry();
   return (
     <header className="sticky top-0 z-50 border-b bg-background/85 backdrop-blur-md">
+      <ScrollProgress />
       <div className="container-x flex h-16 items-center justify-between gap-4">
         <Logo />
         <nav className="hidden items-center gap-1 lg:flex">
