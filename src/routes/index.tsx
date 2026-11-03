@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Layers, MessageCircle, Truck, UserRound } from "lucide-react";
 import { products } from "@/data/products";
-import { ProductGrid } from "@/components/catalogue";
+import { FeaturedCarousel, HeroGlow, Marquee } from "@/components/home-interactive";
 import { Reveal, WhatsAppButton } from "@/components/layout";
 import { ProductImage } from "@/components/product-image";
 import imgCatIphones from "@/assets/products/iphone-15-pro-max-blue-titanium.jpg.asset.json";
