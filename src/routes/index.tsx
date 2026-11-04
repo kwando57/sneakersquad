@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Layers, MessageCircle, Truck, UserRound } from "lucide-react";
 import { products } from "@/data/products";
-import { FeaturedCarousel, HeroGlow, Marquee } from "@/components/home-interactive";
+import { FeaturedCarousel, HeroGlow } from "@/components/home-interactive";
 import { Reveal, WhatsAppButton } from "@/components/layout";
 import { ProductImage } from "@/components/product-image";
 import imgCatIphones from "@/assets/products/iphone-15-pro-max-blue-titanium.jpg.asset.json";
@@ -58,8 +58,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      <Marquee />
 
       <section className="container-x py-16">
         <Reveal><h2 className="text-2xl font-bold md:text-3xl">Shop by category</h2></Reveal>

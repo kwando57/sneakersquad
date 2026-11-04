@@ -26,29 +26,6 @@ export function HeroGlow() {
   return <div ref={ref} aria-hidden className="hero-glow pointer-events-none absolute inset-0 -z-10" />;
 }
 
-const TICKER = ["Sneakers", "iPhones", "Prices in Rand", "WhatsApp Enquiries", "South Africa"];
-
-/** Infinite scrolling strip; pauses on hover, disabled for reduced motion. */
-export function Marquee() {
-  const row = (hidden: boolean) => (
-    <div aria-hidden={hidden} className="flex shrink-0 items-center">
-      {TICKER.map((t) => (
-        <span key={t} className="flex items-center">
-          <span className="px-6 font-display text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground sm:text-sm">{t}</span>
-          <span className="size-1.5 rounded-full bg-primary" />
-        </span>
-      ))}
-    </div>
-  );
-  return (
-    <div className="marquee overflow-hidden border-y border-primary/15 bg-secondary/40 py-4">
-      <div className="animate-marquee flex w-max">
-        {row(false)}
-        {row(true)}
-      </div>
-    </div>
-  );
-}
 
 /** Auto-rotating showcase of featured products with arrows, dots and keyboard support. */
 export function FeaturedCarousel({ items }: { items: Product[] }) {
