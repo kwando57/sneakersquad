@@ -26,7 +26,7 @@ export function HeroGlow() {
   return <div ref={ref} aria-hidden className="hero-glow pointer-events-none absolute inset-0 -z-10" />;
 }
 
-const TICKER = ["Sneakers", "iPhones", "Sizes 1–10", "Prices in Rand", "WhatsApp Enquiries", "South Africa"];
+const TICKER = ["Sneakers", "iPhones", "Prices in Rand", "WhatsApp Enquiries", "South Africa"];
 
 /** Infinite scrolling strip; pauses on hover, disabled for reduced motion. */
 export function Marquee() {
@@ -97,7 +97,6 @@ export function FeaturedCarousel({ items }: { items: Product[] }) {
               <div className="flex flex-col justify-center">
                 <p className="text-xs font-bold uppercase tracking-[0.25em] text-primary">{CATEGORY_LABELS[p.category]}</p>
                 <h3 className="mt-3 text-2xl font-bold sm:text-3xl">{p.name}</h3>
-                {p.storage && <p className="mt-1 text-sm text-muted-foreground">{p.storage}</p>}
                 <p className="mt-3 text-2xl font-extrabold text-primary">{formatPrice(p.price)}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a
